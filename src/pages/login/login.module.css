@@ -3,7 +3,7 @@
     width: 100vw;
 }
 
-.signupContainer{
+.loginContainer{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +12,7 @@
     width: 100%;
 }
 
-.signupCard{
+.loginCard{
     border: 1px solid #ccc;
     width: 25%;
     padding: 1rem;  
@@ -30,7 +30,7 @@
 }
 
 @media only screen and (max-width : 500px) {
-   .signupCard{
+   .loginCard{
         width: 80%;
    }
 
@@ -41,7 +41,7 @@
 
 
 @media screen and (min-width : 500px) and (max-width : 1024px) {
-    .signupCard{
+    .loginCard{
         width: 50%;
    }
 
