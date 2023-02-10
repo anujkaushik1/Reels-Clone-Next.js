@@ -4,12 +4,11 @@ import TextField from '@mui/material/TextField';
 function index() {
   return (
     <div className='signup-container'>
+        <div className='signup-card'>
+    
+            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
 
-      <div className='signup-card'>
-
-        {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
-
-      </div>
+        </div>
 
     </div>
   )
