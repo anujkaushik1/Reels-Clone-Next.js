@@ -29,6 +29,30 @@
     padding: 1rem;
 }
 
+.parentContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.courBg{
+    background: url('../../../assets/courbg.png');
+    background-size: cover;
+    height: 630px;
+    width: 441px;
+    position: relative;
+}
+
+.cour{
+    width: 320px;
+    position: absolute;
+    left: 150px;
+    top: 23px;
+
+}
+
 @media only screen and (max-width : 500px) {
    .loginCard{
         width: 80%;
