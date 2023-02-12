@@ -43,25 +43,10 @@ function Navbar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
+          
             
-            <Image src={InstaLogo} width = {200} height = {55}/>
+        <Image src={InstaLogo} width = {200} height = {55}/>
 
-          </Typography>
 
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
