@@ -1,0 +1,69 @@
+
+.reels-videos-main{
+    margin-top: 20px;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
+    scrollbar-width: 0;
+
+}
+.video-container{
+    height: 75%;
+    width: 25%;
+    border-radius: 15px;
+    scrollbar-width: none;
+}
+
+.video-container ::-webkit-scrollbar{
+    display: none;
+}
+
+
+.post-container{
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    background-color: aqua;
+    border: 1px solid black;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.post-container > video{
+    height: 100%;
+    width: 100%;
+
+}
+
+.videos-info{
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.videos-info .avatar-container{
+    display: flex;
+    width: 70%;
+}
+
+.videos-info .avatar-container > p{
+    margin-left: 0.7rem;
+}
+
+.videos-info .post-like{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    height: 10%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.videos-info .post-like p{
+    margin: 0.5rem;
+}

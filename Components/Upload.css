@@ -2,7 +2,6 @@
     display: flex;
     width: 100%;
     height: fit-content;
-    margin-top: 40px;
     align-items: center;
     flex-direction: column;
 }
@@ -13,4 +12,8 @@
     height: fit-content;
     display: flex;
     justify-content: center;
+}
+
+.upload-container{
+    margin-top: 20px;
 }

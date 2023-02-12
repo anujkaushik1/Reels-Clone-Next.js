@@ -4,7 +4,7 @@ import MovieCreationIcon from '@mui/icons-material/MovieCreation';
 
 function Upload() {
     return (
-        <div>
+        <div className='upload-container'>
             <div className='upload-button'>
 
                 <Button variant="outlined" startIcon={<MovieCreationIcon />}
