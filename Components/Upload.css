@@ -17,3 +17,19 @@
 .upload-container{
     margin-top: 20px;
 }
+
+
+@media only screen and (max-width : 500px) {
+    
+    .upload-button .btn{
+        width: 80% !important;
+    }
+ 
+  }
+  
+  
+  @media screen and (min-width : 500px) and (max-width : 1024px) {
+    .upload-button .btn{
+        width: 38% !important;
+    }
+  }

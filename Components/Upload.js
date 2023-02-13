@@ -7,7 +7,7 @@ function Upload() {
         <div className='upload-container'>
             <div className='upload-button'>
 
-                <Button variant="outlined" startIcon={<MovieCreationIcon />}
+                <Button className='btn' variant="outlined" startIcon={<MovieCreationIcon />}
                     component="label" style={{
                         width: '20%',
                         height: '40px'

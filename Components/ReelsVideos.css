@@ -1,20 +1,20 @@
 
 .reels-videos-main{
-    margin-top: 20px;
     display: flex;
     width: 100vw;
     height: 100vh;
-    align-items: center;
-    flex-direction: column;
+    justify-content: center;
+    flex-direction: row;
     overflow: scroll;
     scrollbar-width: 0;
-
+    margin-top: 20px;
 }
 .video-container{
     height: 75%;
     width: 25%;
     border-radius: 15px;
     scrollbar-width: none;
+    
 }
 
 .video-container ::-webkit-scrollbar{
@@ -67,3 +67,23 @@
 .videos-info .post-like p{
     margin: 0.5rem;
 }
+
+@media only screen and (max-width : 500px) {
+
+   .video-container{
+    width: 80%;
+    margin-bottom: 20px;
+   }
+
+ }
+ 
+ 
+ @media screen and (min-width : 500px) and (max-width : 1024px) {
+    .video-container{
+        width: 38%;
+    }
+
+    .post-container{
+        margin-bottom: 20px;
+    }
+ }
