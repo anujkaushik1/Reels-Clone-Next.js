@@ -3,8 +3,14 @@ import '../../Components/Navbar.css';
 import '../../Components/Upload.css';
 import '../../Components/ReelsVideos.css';
 import '../../Screens/Feed.css';
+import AuthWrapper from 'context/auth';
 
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <AuthWrapper>
+        <Component {...pageProps} />
+    </AuthWrapper>
+    
+  )
 }
