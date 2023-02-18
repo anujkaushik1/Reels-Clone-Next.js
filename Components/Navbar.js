@@ -14,6 +14,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
 import Image from 'next/image';
 import InstaLogo from '../assets/images.png'
+import { AuthContext } from 'context/auth';
+import { Router, useRouter } from 'next/router';
 
 
 const pages = ['Products', 'Pricing', 'Blog'];
@@ -38,14 +40,25 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
+  const { logout } = React.useContext(AuthContext);
+  const router = useRouter();
+
+  const handleLogout = async() => {
+
+    await logout();
+    router.push('/login');
+
+  }
+
+
   return (
     <AppBar position="static" className='navbar'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
-          
-            
-        <Image src={InstaLogo} width = {200} height = {55}/>
+
+
+          <Image src={InstaLogo} width={200} height={55} />
 
 
 
@@ -77,18 +90,18 @@ function Navbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              
+
             </Menu>
           </Box>
 
-          <Box sx={{ flexGrow: 0, display : 'flex' }}>
-            
-            <HomeIcon fontSize='large' className='nav-icons'/>
-            <ExploreIcon fontSize='large' className='nav-icons'/>
+          <Box sx={{ flexGrow: 0, display: 'flex' }}>
+
+            <HomeIcon fontSize='large' className='nav-icons' />
+            <ExploreIcon fontSize='large' className='nav-icons' />
 
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar sx={{margin : '0.5rem'}} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar sx={{ margin: '0.5rem' }} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -107,11 +120,18 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+
+              <MenuItem  onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">Profile</Typography>
+              </MenuItem>
+              
+              <MenuItem  onClick={() => {
+                handleLogout()
+                // handleCloseUserMenu()
+              }}>
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
+
             </Menu>
           </Box>
         </Toolbar>

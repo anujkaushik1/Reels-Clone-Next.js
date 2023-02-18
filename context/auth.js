@@ -1,5 +1,5 @@
 import { auth } from '../firebase'
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import React, { useEffect, useState } from 'react';
 
 export const AuthContext = React.createContext();
@@ -31,8 +31,14 @@ function AuthWrapper({ children }) {
     return signOut(auth);
   }
 
+  function forgotPass(email){
+    return sendPasswordResetEmail(auth, email);
+  }
+
   const store = {
     login,
+    logout,
+    forgotPass,
     user
 
   }
