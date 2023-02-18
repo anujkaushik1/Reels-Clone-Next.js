@@ -1,5 +1,5 @@
 import { auth } from '../firebase'
-import { onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import React, { useEffect, useState } from 'react';
 
 export const AuthContext = React.createContext();
@@ -12,10 +12,7 @@ function AuthWrapper({ children }) {
   useEffect(() => {
     
     onAuthStateChanged(auth, (user) => {
-
-      if(user){     //already user hai toh ffed page else login page
         setUser(user);
-      }
     })
 
     setLoading(false);
@@ -28,6 +25,7 @@ function AuthWrapper({ children }) {
   }
 
   function logout(){
+    console.log('logging out');
     return signOut(auth);
   }
 
@@ -36,10 +34,17 @@ function AuthWrapper({ children }) {
     return sendPasswordResetEmail(auth, email);
   }
 
+  function signup(email, password){
+
+    return createUserWithEmailAndPassword(auth, email, password);
+
+  }
+
   const store = {
     login,
     logout,
     forgotPass,
+    signup,
     user
 
   }
