@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import TextField from '@mui/material/TextField';
-import classes from './login.module.css';
+import classes from './forgot.module.css';
 import Image from 'next/image';
 import instaImage from '../../../assets/images.png';
 import Button from '@mui/material/Button';
@@ -11,8 +11,6 @@ import bg2 from '../../../assets/bg2.png';
 import bg3 from '../../../assets/bg3.png';
 import { AuthContext } from 'context/auth';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
-
 
 function index() {
 
@@ -20,7 +18,7 @@ function index() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const {login, user} = useContext(AuthContext);
+  const {forgotPass, user} = useContext(AuthContext);
   const router = useRouter();
 
 
@@ -32,12 +30,13 @@ function index() {
   }, [user])
   
 
-  const loginUser = async() => {
+  const handleClick = async() => {
 
     try {
       setLoading(true);
-      await login(email,password);
-      console.log('logged in');
+      await forgotPass(email);
+      console.log('Email sent');
+      router.push('/login');
       setLoading(false);
       
     } catch (error) {
@@ -91,33 +90,21 @@ function index() {
               size='small' value={email} type='email' margin='dense' 
               onChange={(e) => setEmail(e.target.value)}/>
 
-            <TextField
-              id="outlined-basic" label="Password" variant="outlined" fullWidth
-              size='small' value={password} type='password' margin='dense'
-              onChange={(e) => setPassword(e.target.value)} />
 
 
             <Button fullWidth sx={{ marginTop: '5%' }} 
-              onClick = {loginUser} variant="contained" disabled = {loading}>
-              Login
+              onClick = {handleClick} variant="contained" disabled = {loading}>
+              Send Email
             </Button>
 
-            <div style={{
-              color: 'blue',
-              marginTop: '10px'
-            }}>
-              Forgot Password ?
-            </div>
+            
 
           </div>
 
           <div className={classes.bottomCard}>
-            Don't have an account? 
-            <Link href='/signup'>
-                <span style={{
-                  color: 'blue'
-                }}>Sign Up</span>
-            </Link>
+            Don't have an account? <span style={{
+              color: 'blue'
+            }}>Sign Up</span>
           </div>
 
 

@@ -1,0 +1,76 @@
+.main{
+    height: 100vh;
+    width: 100vw;
+}
+
+.loginContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.loginCard{
+    border: 1px solid #ccc;
+    width: 25%;
+    padding: 1rem;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottomCard{
+    width: 25%;
+    margin-top: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+
+.parentContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.courBg{
+    background: url('../../../assets/courbg.png');
+    background-size: cover;
+    height: 630px;
+    width: 441px;
+    position: relative;
+}
+
+.cour{
+    width: 320px;
+    position: absolute;
+    left: 150px;
+    top: 23px;
+
+}
+
+@media only screen and (max-width : 500px) {
+   .loginCard{
+        width: 80%;
+   }
+
+   .bottomCard{
+    width: 80%;
+   }
+}
+
+
+@media screen and (min-width : 500px) and (max-width : 1024px) {
+    .loginCard{
+        width: 50%;
+   }
+
+   .bottomCard{
+    width: 50%;
+   }
+
+}

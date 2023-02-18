@@ -32,6 +32,7 @@ function AuthWrapper({ children }) {
   }
 
   function forgotPass(email){
+    console.log('coming');
     return sendPasswordResetEmail(auth, email);
   }
 
