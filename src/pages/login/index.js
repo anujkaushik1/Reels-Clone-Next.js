@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import TextField from '@mui/material/TextField';
 import classes from './login.module.css';
 import Image from 'next/image';
@@ -9,8 +9,44 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import bg1 from '../../../assets/bg1.png';
 import bg2 from '../../../assets/bg2.png';
 import bg3 from '../../../assets/bg3.png';
+import { AuthContext } from 'context/auth';
+import { useRouter } from 'next/router';
 
 function index() {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const {login, user} = useContext(AuthContext);
+  const router = useRouter();
+
+
+  useEffect(() => {
+    
+    if(user) router.push('/');
+  
+  
+  }, [user])
+  
+
+  const loginUser = async() => {
+
+    try {
+      setLoading(true);
+      await login(email,password);
+      console.log('logged in');
+      setLoading(false);
+      
+    } catch (error) {
+        console.log(error.message);
+        setLoading(false);
+    }
+
+  }
+
+
+
   return (
     <div className={classes.main}>
       <div className={classes.loginContainer}>
@@ -50,14 +86,17 @@ function index() {
               src={instaImage} />
             <TextField
               id="outlined-basic" label="Email" variant="outlined" fullWidth
-              size='small' type='email' margin='dense' />
+              size='small' value={email} type='email' margin='dense' 
+              onChange={(e) => setEmail(e.target.value)}/>
 
             <TextField
               id="outlined-basic" label="Password" variant="outlined" fullWidth
-              size='small' type='password' margin='dense' />
+              size='small' value={password} type='password' margin='dense'
+              onChange={(e) => setPassword(e.target.value)} />
 
 
-            <Button fullWidth sx={{ marginTop: '5%' }} variant="contained">
+            <Button fullWidth sx={{ marginTop: '5%' }} 
+              onClick = {loginUser} variant="contained" disabled = {loading}>
               Login
             </Button>
 

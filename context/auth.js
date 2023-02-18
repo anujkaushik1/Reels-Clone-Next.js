@@ -1,27 +1,46 @@
-import { auth } from 'firebase'
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import React from 'react';
+import { auth } from '../firebase'
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import React, { useEffect, useState } from 'react';
 
 export const AuthContext = React.createContext();
 
-function AuthWrapper({children}) {
+function AuthWrapper({ children }) {
+
+  const [user, setUser] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    
+    onAuthStateChanged(auth, (user) => {
+
+      if(user){     //already user hai toh ffed page else login page
+        setUser(user);
+      }
+    })
+
+    setLoading(false);
   
-    function login(email, password){
+  }, [])
+  
 
-        return signInWithEmailAndPassword(auth, email, password);
+  function login(email, password) {
+    return signInWithEmailAndPassword(auth, email, password);
+  }
 
-    }
+  function logout(){
+    return signOut(auth);
+  }
 
-    const store = {
+  const store = {
+    login,
+    user
 
-        login
-
-    }
+  }
 
   return (
     <AuthContext.Provider value={store}>
-        {/* jo bhi children hai store ki cheeze access kr skte hai */}
-        {children}     
+      {/* jo bhi children hai store ki cheeze access kr skte hai */}
+      {!loading && children}
 
     </AuthContext.Provider>
   )
