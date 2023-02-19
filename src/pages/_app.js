@@ -3,6 +3,8 @@ import '../../Components/Navbar.css';
 import '../../Components/Upload.css';
 import '../../Components/ReelsVideos.css';
 import '../../Screens/Feed.css';
+import '../../Screens/ProfileScreen.css';
+
 import AuthWrapper from 'context/auth';
 
 
