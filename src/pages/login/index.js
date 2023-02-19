@@ -68,9 +68,9 @@ function index() {
                 interval={2000}
               >
                 <Slider>
-                  <Slide index={0}><Image src={bg1} /></Slide>
-                  <Slide index={1}><Image src={bg2} /></Slide>
-                  <Slide index={2}><Image src={bg3} /></Slide>
+                  <Slide index={0}><Image alt='bg1' src={bg1} /></Slide>
+                  <Slide index={1}><Image alt='bg2' src={bg2} /></Slide>
+                  <Slide index={2}><Image alt='bg3' src={bg3} /></Slide>
 
                 </Slider>
               </CarouselProvider>

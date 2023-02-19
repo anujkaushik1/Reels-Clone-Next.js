@@ -23,9 +23,9 @@ function index() {
 
   useEffect(() => {
 
-    // if (user) {
-    //   router.push('/');
-    // }
+    if (user) {
+      router.push('/');
+    }
 
   }, [user])
 
@@ -37,8 +37,7 @@ function index() {
       const user = await signup(email, password);
       console.log('Signed up');
 
-      let d = sendDataToFirebaseStorage(user);
-      console.log('mainnn', d);
+      sendDataToFirebaseStorage(user);
 
       setLoading(false);
 
@@ -114,6 +113,7 @@ function index() {
               height: '25%',
               width: '80%'
             }}
+            alt = 'instagram'
             src={instaImage} />
           <TextField
             id="outlined-basic" label="Email" variant="outlined" fullWidth

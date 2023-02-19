@@ -4,6 +4,7 @@ import { Inter } from '@next/font/google'
 import Feed from 'Screens/Feed'
 
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -17,7 +18,12 @@ export default function Home() {
       </Head>
 
 
+      {/* {
+        user?.uid ? <Feed/> : <Redirect/>
+      } */}
+
       <Feed/>
+
 
     </>
   )

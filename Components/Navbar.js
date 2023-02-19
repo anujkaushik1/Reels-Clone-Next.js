@@ -58,7 +58,7 @@ function Navbar() {
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
 
 
-          <Image src={InstaLogo} width={200} height={55} />
+          <Image alt='instalogo' src={InstaLogo} width={200} height={55} />
 
 
 
