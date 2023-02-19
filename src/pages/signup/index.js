@@ -7,7 +7,8 @@ import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
 import { AuthContext } from 'context/auth';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { storage } from '../../../firebase';
+import { db, storage } from '../../../firebase';
+import { setDoc, doc } from 'firebase/firestore';
 
 function index() {
 
@@ -36,7 +37,8 @@ function index() {
       const user = await signup(email, password);
       console.log('Signed up');
 
-      sendDataToFirebaseStorage(user);
+      let d = sendDataToFirebaseStorage(user);
+      console.log('mainnn', d);
 
       setLoading(false);
 
@@ -58,6 +60,7 @@ function index() {
     // 1. 'state_changed' observer, called any time the state changes
     // 2. Error observer, called on failure
     // 3. Completion observer, called on successful completion
+
     uploadTask.on('state_changed',
       (snapshot) => {
         // Observe state change events such as progress, pause, and resume
@@ -75,10 +78,28 @@ function index() {
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log('File available at', downloadURL);
+          sendDataToFirestoreDB(downloadURL, user);
         });
       }
     );
 
+
+
+
+  }
+
+
+  async function sendDataToFirestoreDB(url, user){
+
+    let dataObj = {
+      name,
+      email,
+      uid : user.user.uid,
+      photoURL : url
+    }
+
+    await setDoc(doc(db, 'users', user.user.uid), dataObj);
+    console.log(dataObj);
 
   }
 
